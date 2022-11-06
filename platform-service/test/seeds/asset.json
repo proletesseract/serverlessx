@@ -1,0 +1,57 @@
+[
+  {
+    "id": "6012343c-8dae-4dfd-9b09-7b44034e6d31",
+    "owner_id": "484a3691-413c-448a-8323-b1e313ecfeb7",
+    "collection_id": "4b1cb3cb-a220-43fa-892c-93aae91b55cb",
+    "name": "jigglypuff",
+    "asset_type": "NFT",
+    "url": "assets/nfts/039.png",
+    "attributes": [
+      {"type": "psychic"}
+    ]
+  },
+  {
+    "id": "17806ac1-4156-4ba5-8752-4d028a158794",
+    "owner_id": "484a3691-413c-448a-8323-b1e313ecfeb7",
+    "collection_id": "4b1cb3cb-a220-43fa-892c-93aae91b55cb",
+    "name": "pikachu",
+    "asset_type": "NFT",
+    "url": "assets/nfts/025.png",
+    "attributes": [
+      {"type": "electric"}
+    ]
+  },
+  {
+    "id": "bdf174d7-131b-4aa5-9cb7-69f659abb844",
+    "owner_id": "484a3691-413c-448a-8323-b1e313ecfeb7",
+    "collection_id": "4b1cb3cb-a220-43fa-892c-93aae91b55cb",
+    "name": "charmander",
+    "asset_type": "NFT",
+    "url": "assets/nfts/004.png",
+    "attributes": [
+      {"type": "fire"}
+    ]
+  },
+  {
+    "id": "3cd5ed6f-85e1-4de0-80ac-cc1060d1442b",
+    "owner_id": "484a3691-413c-448a-8323-b1e313ecfeb7",
+    "collection_id": "4b1cb3cb-a220-43fa-892c-93aae91b55cb",
+    "name": "squirtle",
+    "asset_type": "NFT",
+    "url": "assets/nfts/007.png",
+    "attributes": [
+      {"type": "water"}
+    ]
+  },
+  {
+    "id": "e562121b-d807-49af-a11a-4090e2266322",
+    "owner_id": "484a3691-413c-448a-8323-b1e313ecfeb7",
+    "collection_id": "4b1cb3cb-a220-43fa-892c-93aae91b55cb",
+    "name": "bulbasaur",
+    "asset_type": "NFT",
+    "url": "assets/nfts/001.png",
+    "attributes": [
+      {"type": "grass"}
+    ]
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "e261cf11-ce51-4529-9996-eaeba859d9ea",
+    "first_name": "Craig",
+    "last_name": "MacGregor",
+    "email": "craigmacgregor@gmail.com",
+    "password": "1234"
+  },
+  {
+    "id": "484a3691-413c-448a-8323-b1e313ecfeb7",
+    "first_name": "Ryan",
+    "last_name": "Engelhardt",
+    "email": "ryanengelhardt@gmail.com",
+    "password": "qwer"
+  }
+]
