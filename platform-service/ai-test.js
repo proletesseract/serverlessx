@@ -7,28 +7,50 @@ const filePath = './platform-service/controllers/access.controller.ts';
 // Define the path where the generated documentation should be saved
 const docsPath = './docs';
 
+// Read the file content
+const fileContent = fs.readFileSync(filePath, 'utf8');
+
+// Define a regular expression to match function declarations
+const functionRegex = /(public|private|protected)?\s*(async)?\s*(static)?\s*([a-zA-Z_$][\w$]*)\s*\(([^\)]*)\)(\s*:\s*([^\s{}[\]]+))?(\s*{\s*)?/g;
+
+// Extract function names and parameters
+const functionDeclarations = [];
+let match = functionRegex.exec(fileContent);
+while (match) {
+  const [fullMatch, accessModifier, isAsync, isStatic, name, parameters] = match;
+  functionDeclarations.push({
+    name,
+    parameters,
+  });
+  match = functionRegex.exec(fileContent);
+}
+
+// Generate inlinecode comments for functions
+const comments = functionDeclarations.map((declaration) => {
+  const parameters = declaration.parameters.split(',').map((parameter) => parameter.trim());
+  const parameterComments = parameters.map((parameter) => ` * @param ${parameter} - The ${parameter} parameter.\n`).join('');
+  return `/**
+ * @function ${declaration.name}
+${parameterComments} */`;
+});
+
+// Write the comments to the TypeScript file
+let newFileContent = fileContent;
+for (let i = 0; i < functionDeclarations.length; i++) {
+  const declaration = functionDeclarations[i];
+  newFileContent = newFileContent.replace(declaration.name, `${comments[i]}\n${declaration.name}`);
+}
+fs.writeFileSync(filePath, newFileContent);
+
 // Generate documentation using the typedoc package
 const typedocCommand = `npx typedoc --out ${docsPath} --excludeExternals ${filePath}`;
 spawnSync(typedocCommand, { shell: true });
-
-// Read the generated documentation file and extract the comments
-const docsFile = `${docsPath}/modules.html`;
-const docsContent = fs.readFileSync(docsFile, 'utf8');
-const commentsRegex = /<p class="tsd-comment-text">([\s\S]*?)<\/p>/g;
-const comments = docsContent.match(commentsRegex);
-
-// Write the comments to the TypeScript file
-const fileContent = fs.readFileSync(filePath, 'utf8');
-const newFileContent = fileContent.replace(/\/\*\*([\s\S]*?)\*\//g, () => {
-  return `/**\n * ${comments.shift().replace(/(<([^>]+)>)/gi, '')}\n */`;
-});
-fs.writeFileSync(filePath, newFileContent);
 
 // Commit the changes to GitHub using the git CLI
 // Note: You will need to set up authentication and authorization for this step
 const gitCommands = [
   'git add .',
-  'git commit -m "Update code comments with Typedoc"',
+  'git commit -m "Update inlinecode comments with Typedoc"',
   'git push origin test',
 ];
 for (const command of gitCommands) {
